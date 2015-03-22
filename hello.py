@@ -1,4 +1,4 @@
-from bottle import route, run, template, static_file, error, abort
+from bottle import route, run, template, static_file, error, abort, redirect
 
 @route('/')
 @route('/hello/<name>')
@@ -22,5 +22,9 @@ def error404(error):
 @route('/denied')
 def restricted():
   abort(401, 'Sorry, access denied')
+
+@route('/redirect')
+def redirecter():
+  redirect("http://example.com/")
 
 run(host='localhost', port=8000, debug=True, reloader=True)
