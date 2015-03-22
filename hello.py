@@ -1,4 +1,4 @@
-from bottle import route, run, template, static_file, error
+from bottle import route, run, template, static_file, error, abort
 
 @route('/')
 @route('/hello/<name>')
@@ -18,5 +18,9 @@ def static(filepath):
 def error404(error):
   print error
   return 'Sorry, Nothing here'
+
+@route('/denied')
+def restricted():
+  abort(401, 'Sorry, access denied')
 
 run(host='localhost', port=8000, debug=True, reloader=True)
