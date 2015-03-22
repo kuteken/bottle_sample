@@ -6,6 +6,7 @@ def greet(name='Stranger'):
   return template('Hello {{name}}', name=name)
 
 @route('/user/<id:int>')
+@route('/user/<id:re:[a-c]+>')
 def userPage(id):
   return template('This is user: {{id}} page.', id=id)
 
