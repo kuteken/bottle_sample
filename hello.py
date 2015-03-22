@@ -5,4 +5,8 @@ from bottle import route, run, template
 def greet(name='Stranger'):
   return template('Hello {{name}}', name=name)
 
+@route('/user/<id:int>')
+def userPage(id):
+  return template('This is user: {{id}} page.', id=id)
+
 run(host='localhost', port=8000, debug=True, reloader=True)
